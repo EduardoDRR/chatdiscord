@@ -1,0 +1,36 @@
+.inputMessage {
+  height: 80px;
+  width: 66%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  bottom: 0;
+  position: fixed;
+  background-color: rgba(75, 75, 75, 0.7);
+}
+
+.inputMessage > input {
+  width: 75%;
+  height: 40px;
+  max-height: 40px;
+  margin: 10px 2% 10px 2%;
+  padding: 0 10px 0 10px;
+  border-radius: 12px;
+  background-color: #7a7a7a;
+  outline: none;
+}
+
+.inputMessage > input::placeholder {
+  color: #ccc;
+  font-weight: 400;
+}
+
+.inputMessage > button {
+  width: 15%;
+  height: 40px;
+  background-color: rgb(104, 111, 242);
+  border-radius: 12px;
+  border: #555 1px solid;
+  outline: none;
+  cursor: pointer;
+}
