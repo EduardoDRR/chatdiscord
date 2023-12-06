@@ -2,15 +2,11 @@ import { useState } from 'react';
 //* Styles
 import './styles.css';
 
-function InputBar() {
+function InputBar({ sendMessage }) {
   const [text, setText] = useState('');
 
   const handleTextInput = (message) => {
     setText(message.target.value);
-  };
-
-  const sendMessage = () => {
-    console.log('ENVIADO: ', text);
   };
 
   return (

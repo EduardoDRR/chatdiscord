@@ -11,21 +11,22 @@ import ChatsBar from './layout/ChatsBar';
 import ChatHeader from './layout/ChatHeader';
 
 function App() {
-  const [chats, setChats] = useState([]);
   const { id } = useParams();
-  console.log(id);
+  const [messages, setMessages] = useState([]);
+  const [formValue, setFormValue] = useState('');
+  const [error, setError] = useState('');
 
   const getMessages = async () => {
     try {
-      const res = await query(collection(db, 'chat1'), orderBy('id'));
+      const res = await query(collection(db, 'chat1'), orderBy('sender'));
 
-      onSnapshot(res, (querySnapshot) => {
-        setChats(
+      return onSnapshot(res, (querySnapshot) => {
+        setMessages(
           querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
         );
       });
     } catch (error) {
-      alert(error);
+      setError(error.message);
     }
   };
 
@@ -33,14 +34,25 @@ function App() {
     getMessages();
   }, []);
 
+  const sendMessage = async (e) => {
+    e.preventDefault();
+
+    // Add a new message to Firestore
+    /* await messagesRef.add({
+      text: formValue,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+    }); */
+
+    setFormValue('');
+  };
+
   return (
     <div className="app-content">
       <ChatsBar />
       <main>
         <ChatHeader contactName={id} />
-        <TextsContainer sender={id} />
-        {chats}
-        <InputBar />
+        <TextsContainer sender={id} messages={messages} />
+        <InputBar sendMessage={sendMessage} />
       </main>
     </div>
   );

@@ -14,17 +14,20 @@ const DATA = [
   { id: 3, message: 'Hola', timestamp: '09:00 pm' },
 ];
 
-function TextsContainer({ sender }) {
+function TextsContainer({ sender, messages }) {
+  const timestamp = 1702531503; // seconds
+  const date = new Date(timestamp * 1000);
+
   return (
     <div className="message-container">
       {sender !== undefined ? (
         <>
           <ul className="message-list-owner">
-            {DATA.map((elem) => (
+            {messages.map((elem) => (
               <li key={elem.id}>
                 <TextBubble
-                  message={`${elem.message} | ${sender}`}
-                  time={elem.timestamp}
+                  message={elem.message}
+                  time={date.toGMTString().slice(0, 22)}
                   status={'sender'}
                 />
               </li>
