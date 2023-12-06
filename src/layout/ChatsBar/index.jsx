@@ -10,16 +10,16 @@ function ChatsBar() {
       </Link>
       <ul className="chats-list">
         <li>
-          <Link to={'/Fer'}>chat 1</Link>
+          <Link to={'/chat1'}>chat 1</Link>
         </li>
         <li>
-          <Link to={'/Flowers'}>chat 2</Link>
+          <Link to={'/chat2'}>chat 2</Link>
         </li>
         <li>
-          <Link to={'/Alexis'}>chat 3</Link>
+          <Link to={'/chat3'}>chat 3</Link>
         </li>
         <li>
-          <Link to={'/Lalo'}>chat 4</Link>
+          <Link to={'/chat4'}>chat 4</Link>
         </li>
       </ul>
     </aside>
